@@ -1,0 +1,147 @@
+/*!
+================================================================================
+ *  GRID COLUMNS & LAYOUT HELPERS
+================================================================================
+ */
+
+// Will spit out all the column size classes
+
+@include make-grid(xs);
+
+@include bp(sm) {
+  @include make-grid(sm);
+}
+
+@include bp(md) {
+  @include make-grid(md);
+}
+
+@include bp(lg) {
+  @include make-grid(lg);
+}
+
+@include bp(xl) {
+  @include make-grid(xl);
+}
+
+%clearfix {
+  @include clearfix();
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+// Needs box-sizing to work
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+// layout
+
+// similar to bootstrap only padding and gutters change at various breakpoints
+
+// use .container-full if you want full width
+.container-full {
+  @extend %clearfix;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: map-get($gutter, xs);
+  padding-right: map-get($gutter, xs);
+  @include bp(sm) {
+    padding-left: map-get($gutter, sm);
+    padding-right: map-get($gutter, sm);
+  }
+  @include bp(md) {
+    padding-left: map-get($gutter, md);
+    padding-right: map-get($gutter, md);
+  }
+  @include bp(lg) {
+    padding-left: map-get($gutter, lg);
+    padding-right: map-get($gutter, lg);
+  }
+}
+
+// container will have max width on large screens
+.container {
+  @extend .container-full;
+  @include bp(xl) {
+    max-width: map-get($breakpoints, xl);
+  }
+}
+
+.row {
+  @extend %clearfix;
+  margin-left: -(map-get($gutter, xs)/2);
+  margin-right: -(map-get($gutter, xs)/2);
+  @include bp(sm) {
+    margin-left: -(map-get($gutter, sm)/2);
+    margin-right: -(map-get($gutter, sm)/2);
+  }
+  @include bp(md) {
+    margin-left: -(map-get($gutter, md)/2);
+    margin-right: -(map-get($gutter, md)/2);
+  }
+  @include bp(lg) {
+    margin-left: -(map-get($gutter, lg)/2);
+    margin-right: -(map-get($gutter, lg)/2);
+  }
+}
+
+[class^="col-"], [class*=" col-"] {
+  @extend %clearfix;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: (map-get($gutter, xs)/2);
+  padding-right: (map-get($gutter, xs)/2);
+  @include bp(sm) {
+    padding-left: (map-get($gutter, sm)/2);
+    padding-right: (map-get($gutter, sm)/2);
+  }
+  @include bp(md) {
+    padding-left: (map-get($gutter, md)/2);
+    padding-right: (map-get($gutter, md)/2);
+  }
+  @include bp(lg) {
+    padding-left: (map-get($gutter, lg)/2);
+    padding-right: (map-get($gutter, lg)/2);
+  }
+}
+
+// TODO: Add helper classes for vertical padding
+
+img {
+  border: 0 none;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.sm-pull-right {
+  @include bp(sm) {
+    float: right;
+  }
+}

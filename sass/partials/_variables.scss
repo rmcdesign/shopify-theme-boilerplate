@@ -1,0 +1,28 @@
+$body_bg: #{'"{{settings.body_bg_color}}"'};
+
+// for animations
+$speed: 250ms;
+
+$grid-columns: 12;
+
+$gutter: (
+  xs: 12px,
+  sm: 18px,
+  md: 24px,
+  lg: 30px,
+  xl: 30px
+);
+
+$breakpoints: (
+  xs: 320px,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+$breakpoints-max: (
+  xs: (map-get($breakpoints, sm)-1),
+  sm: (map-get($breakpoints, md)-1),
+  md: (map-get($breakpoints, lg)-1),
+  lg: (map-get($breakpoints, xl)-1)
+);
